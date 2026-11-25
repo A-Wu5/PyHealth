@@ -47,10 +47,10 @@ def load_normalized_ecg(
     std = np.asarray(std)
 
     if mean.shape != (12,) or std.shape != (12,):
-        raise ValueError("Expect 12 means and 12 standard deviations")
+        raise ValueError("expect 12 means and 12 standard deviations")
     #prevent training loss with nan vals
     if not np.isfinite(mean).all() or not np.isfinite(std).all():
-        raise ValueError("Normalize statistics must be finite")
+        raise ValueError("normalize statistics must be finite")
 
     if (std <= 0).any():
         raise ValueError("Standard deviations must be positive")
@@ -60,8 +60,19 @@ def load_normalized_ecg(
     signal[np.isnan(signal)] = 0
 
     if not np.isfinite(signal).all():
-        raise ValueError("Signal contains infinite values")
+        raise ValueError("signal contains infinite vals")
 
+    #pad shorter recordings to 10 seconds before normalization 
+    target_length = 5000
+    signal_length = signal.shape[1]
+
+    if signal_length > target_length:
+        raise ValueError("Recording exceeds 10 seconds")
+
+    if signal_length < target_length:
+        padding = target_length - signal_length
+        signal = np.pad(signal, ((0, 0), (padding, 0)))
+    #end padding for recordings shorter than 10 seconds
     #use training statistics for training validation and test recordings
     signal = (signal - mean[:, None]) / std[:, None]
 
@@ -126,7 +137,9 @@ class GeorgiaECGClassification(BaseTask):
     also load diagnosis labels
     """
 
-    task_name = "GeorgiaECGClassification"
+    #task_name = "GeorgiaECGClassification"
+    #updated for caching purposes related to padding issues
+    task_name = "GeorgiaECGClassification_leftpad_v2"
     input_schema = {"signal": "tensor"}
 
     def __init__(self, codes, mean, std, lead_names):
