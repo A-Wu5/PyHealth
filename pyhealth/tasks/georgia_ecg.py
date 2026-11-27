@@ -329,4 +329,4 @@ def load_georgia_data(data_root, processed_root, seed=1):
     train = GeorgiaTrainingDataset(subsets["train"], seed=seed)
     val = GeorgiaEvaluationDataset(subsets["val"])
 
-    return train, val, test, codes
+    return train, val, test, codes, samples
