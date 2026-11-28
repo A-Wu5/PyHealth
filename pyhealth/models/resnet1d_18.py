@@ -74,6 +74,8 @@ class ResNet1D18(BaseModel):
         dropout: float = 0.25,
         feature_key: str = "signal",
         label_key: str = "labels",
+        base_width: int = 64,
+        layers: tuple[int, int, int, int] = (2, 2, 2, 2),
     ):
         super().__init__(dataset=dataset)
 
@@ -128,8 +130,8 @@ class ResNet1D18(BaseModel):
 
         self.backbone = ResNet1dBackbone(
             in_channels=in_channels,
-            base_width=64,
-            layers=(2, 2, 2, 2),
+            base_width=base_width,
+            layers=layers,
             kernel_size=3,
         )
 
