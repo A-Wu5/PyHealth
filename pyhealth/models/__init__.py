@@ -174,3 +174,4 @@ from .game import (
     load_game_embeddings as load_game_embeddings,
     normalize_game_code as normalize_game_code,
 )
+from .resnet1d_18 import ResNet1D18
