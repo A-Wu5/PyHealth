@@ -324,8 +324,10 @@ API Reference
     models/pyhealth.models.EHRMambaCEHR
     models/pyhealth.models.ETHOS
     models/pyhealth.models.Delphi
+    models/pyhealth.models.ECGJEPA
     models/pyhealth.models.JambaEHR
     models/pyhealth.models.ContraWR
+    models/pyhealth.models.CLIPStress
     models/pyhealth.models.EEGNet
     models/pyhealth.models.DeepSleepNet
     models/pyhealth.models.SleepKD
@@ -337,6 +339,8 @@ API Reference
     models/pyhealth.models.Agent
     models/pyhealth.models.GRASP
     models/pyhealth.models.MedFuse
+    models/pyhealth.models.EHRCXREarlyFusion
+    models/pyhealth.models.ConVIRT
     models/pyhealth.models.MAESTRO
     models/pyhealth.models.DAFT
     models/pyhealth.models.DiPro
@@ -362,6 +366,7 @@ API Reference
     models/pyhealth.models.XGBoostModel
     models/pyhealth.models.survival_mdn
     models/pyhealth.models.personalized_survival_moe
+    models/pyhealth.models.MENSA
     models/pyhealth.models.cet
     models/pyhealth.models.TrajSurv
     models/pyhealth.models.KnowRare
@@ -377,5 +382,10 @@ API Reference
     models/pyhealth.models.DescEmb
     models/pyhealth.models.bulk_rna_bert
     models/pyhealth.models.DearLLM
+    models/pyhealth.models.CHET
     models/pyhealth.models.GAME
     models/pyhealth.models.ResNet1D18
+    models/pyhealth.models.MedTok
+    models/pyhealth.models.EviCare
+    models/pyhealth.models.QueryFocusedEHRModel
+
