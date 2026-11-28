@@ -60,6 +60,9 @@ routes each feature type automatically.
    * - :doc:`models/pyhealth.models.td_cnn_lstm`
      - You want real-time ICU mortality risk for each measurement-time state of irregular event streams
      - Temporal-difference training needs paired ``next_*`` successor states and a custom loop that calls ``model.update_target()`` after each optimizer step
+   * - :doc:`models/pyhealth.models.ResNet1D18`
+     - You have multi-lead ECG signals and need multi-label diagnosis classification
+     - 1D ResNet-18 with global average pooling and a classification head; accepts input shaped (batch, leads, time)
 
 How BaseModel Works
 --------------------
@@ -381,6 +384,7 @@ API Reference
     models/pyhealth.models.DearLLM
     models/pyhealth.models.CHET
     models/pyhealth.models.GAME
+    models/pyhealth.models.ResNet1D18
     models/pyhealth.models.MedTok
     models/pyhealth.models.EviCare
     models/pyhealth.models.QueryFocusedEHRModel
